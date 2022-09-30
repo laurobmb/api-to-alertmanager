@@ -14,6 +14,7 @@
 
 * curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json  
 
+* curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example.json
 
 ## Create pod stuck
 
