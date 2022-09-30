@@ -11,16 +11,16 @@
 
 ### Send json for test
 * curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json 
-* curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json
+
 * curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json  
-* curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json
 
-# Test
 
-## create alerts
+## Create pod stuck
+
+### create alerts
     oc -n openshift-monitoring create -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck-alerts.yaml 
 
-## create pods
+### create pods
     oc new-project demo
     
     oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v1.yaml 
@@ -32,18 +32,17 @@
     oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck.yaml
 
 
-# Docker 
-    buildah build -t alertmanager:v1 . 
-    podman run -it --rm --name fastapi-alertmanager -p 8000:8000 alertmanager:v1
-    podman run -it alertmanager:v1 /bin/sh
-    podman exec -it fastapi-alertmanager cat log/fastapi.log
+## Deploy for docker 
+* buildah build -t alertmanager:v1 . 
+* podman run -it --rm --name fastapi-alertmanager -p 8000:8000 alertmanager:v1
+* podman run -it alertmanager:v1 /bin/sh
 
-    podman run -it --rm --name fastapi-alertmanager -p 8000:8000 quay.io/lagomes/apialertmanager:v1
-    podman run -d --rm --name fastapi-alertmanager -p 8000:8000 quay.io/lagomes/apialertmanager:v1
+### deploy POD from quay image
+* podman run -it --rm --name fastapi-alertmanager -p 8000:8000 quay.io/lagomes/apialertmanager:main
+* podman run -d --rm --name fastapi-alertmanager -p 8000:8000 quay.io/lagomes/apialertmanager:main
 
-
-## Remove project
-    oc delete ns demo
+### Get LOGS from POD
+* podman exec -it fastapi-alertmanager cat log/fastapi.log
 
 
 https://rhthsa.github.io/openshift-demo/custom-alert.html
