@@ -1,0 +1,14 @@
+{
+"csp-report": {
+    "referrer": "https://www.agilitafashion.com.br/vestido-curto-recortes-preto-121501vc-008/p",
+    "original-policy": "default-src 'self' io.vtex.com.br *.myvtex.com *.vtex.com.br *.vteximg.com.br; report-uri http://csp.vtex.com/",
+    "blocked-uri": "",
+    "status-code": 0,
+    "line-number": 1,
+    "source-file": "https://master--agilita.myvtex.com",
+    "violated-directive": "default-src 'self' io.vtex.com.br *.myvtex.com *.vtex.com.br *.vteximg.com.br",
+    "document-uri": "https://www.agilitafashion.com.br/checkout/",
+    "effective-directive": "style-src",
+    "column-number": 435481
+  }
+}
