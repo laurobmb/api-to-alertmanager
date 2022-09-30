@@ -45,23 +45,25 @@
 * podman exec -it fastapi-alertmanager cat log/fastapi.log
 
 
+## Alerts from Openshift 
+
+### View alerts
+* ALERTMANAGER="$(oc get route/alertmanager-main -n openshift-monitoring -o jsonpath='{.spec.host}')"
+* curl -s -k -H "Authorization: Bearer $(oc sa get-token prometheus-k8s -n openshift-monitoring)" https://${ALERTMANAGER}/api/v1/alerts | jq .
+
+### View logs from pod of alermanager
+* oc -n openshift-monitoring logs -f -c alertmanager alertmanager-main-0 
+* oc -n openshift-monitoring logs -f -c alertmanager alertmanager-main-1
+
+### Extract secret from alertmanager
+* oc -n openshift-monitoring extract secret/alertmanager-main --to /tmp/  --confirm
+
+### Set secret to alertmanager
+* oc -n openshift-monitoring set data secret/alertmanager-main --from-file /tmp/alertmanager.yaml
+
+
+# Reference
+
 https://rhthsa.github.io/openshift-demo/custom-alert.html
+
 https://github.com/rhthsa/openshift-demo    
-
-
-
-## View alerts
-    ALERTMANAGER="$(oc get route/alertmanager-main -n openshift-monitoring -o jsonpath='{.spec.host}')"
-
-    curl -s -k -H "Authorization: Bearer $(oc sa get-token prometheus-k8s -n openshift-monitoring)" https://${ALERTMANAGER}/api/v1/alerts | jq .
-
-## View logs 
-    oc -n openshift-monitoring logs -f -c alertmanager alertmanager-main-0 
-
-    oc -n openshift-monitoring logs -f -c alertmanager alertmanager-main-1
-
-## Extract secret
-    oc -n openshift-monitoring extract secret/alertmanager-main --to /tmp/  --confirm
-
-## Set secret
-    oc -n openshift-monitoring set data secret/alertmanager-main --from-file /tmp/alertmanager.yaml
