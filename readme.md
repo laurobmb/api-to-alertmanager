@@ -18,19 +18,14 @@
 ## Create pod stuck
 
 ### create alerts
-    oc -n openshift-monitoring create -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck-alerts.yaml 
+* oc -n openshift-monitoring create -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck-alerts.yaml 
 
 ### create pods
-    oc new-project demo
-    
-    oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v1.yaml 
-    
-    oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v2.yaml 
-    
-    oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v3.yaml 
-    
-    oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck.yaml
-
+* oc new-project demo  
+* oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v1.yaml
+* oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v2.yaml
+* oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck/backend-v3.yaml
+* oc apply -n demo -f https://raw.githubusercontent.com/rhthsa/openshift-demo/main/manifests/pod-stuck.yaml
 
 ## Deploy for docker 
 * buildah build -t alertmanager:v1 . 
