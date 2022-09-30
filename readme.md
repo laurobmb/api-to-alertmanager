@@ -1,18 +1,19 @@
 # API alertmanagaer
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    python app.py
 
-## Send json for test
-    curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json
-    
-    curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json
-    
-    curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json
-    
-    curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json
+[![Docker Repository on Quay](https://quay.io/repository/lagomes/apialertmanager/status "Docker Repository on Quay")](https://quay.io/repository/lagomes/apialertmanager)
+
+### Execute
+* python3 -m venv venv
+* source venv/bin/activate
+* pip install --upgrade pip
+* pip install -r requirements.txt
+* python app.py
+
+### Send json for test
+* curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json 
+* curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/example_report.json
+* curl -X POST "http://127.0.0.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json  
+* curl -X POST "http://10.36.17.1:8000/api" -H  "accept: application/json" -H  "Content-Type: application/json" -d @json-example/alert_report.json
 
 # Test
 
